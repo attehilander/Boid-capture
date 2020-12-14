@@ -6,7 +6,7 @@ namespace CustomPhysics
 {
     public class CustomPhysics
     {
-        public static float timestep = Time.fixedDeltaTime * 5;
+        public static float timestep = Time.fixedDeltaTime * 3;
         public static Vector2 gravity = new Vector2(0f, -9.81f);
 
         public static Vector2 GetEulerPosition(Vector3 position, Vector2 velocity)
