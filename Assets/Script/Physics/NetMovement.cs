@@ -12,7 +12,7 @@ namespace CustomPhysics
         {
             Position = transform.position;
             Velocity = cannonControls.CannonDirection * cannonControls.cannonStrength;
-            Debug.Log("Position: " + Position + ", Velocity = " + Velocity);
+            //Debug.Log("Velocity = " + Velocity);
         }
 
         private void FixedUpdate()
@@ -29,6 +29,15 @@ namespace CustomPhysics
                 transform.position = Position;
             }
 
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            Velocity = CustomPhysics.GetReflection(Velocity, collision.GetContact(0).normal);
+            Debug.Log(Velocity);
+
+            Vector3 Velocity3 = new Vector3(Velocity.x, Velocity.y, 0);
+            Debug.DrawLine(collision.GetContact(0).point, collision.GetContact(0).point + Velocity3, Color.green, 1f);
         }
     }
 }

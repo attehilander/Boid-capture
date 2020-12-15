@@ -13,6 +13,7 @@ public class CannonControls : MonoBehaviour
 
     public float cannonStrength = 0.0f;
     public GameObject netPrefab = null;
+    [SerializeField] private Transform cannonMouth = null;
 
     private void Awake()
     {
@@ -32,6 +33,6 @@ public class CannonControls : MonoBehaviour
 
     private void FireCannon()
     {
-        Instantiate(netPrefab, this.gameObject.transform);
+        Instantiate(netPrefab, cannonMouth.position, cannonMouth.rotation);
     }
 }
